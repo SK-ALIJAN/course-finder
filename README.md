@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+## course-finder
+<br>
+An online educational platform offers a wide array of courses tailored to individual needs. It provides comprehensive details about each course, including curriculum information, instructor backgrounds, and enrollment features. This platform serves as a one-stop destination for finding various courses according to specific needs, providing complete details for informed decision-making. <br><br>
+<p align="center"><img src="https://github.com/SK-ALIJAN/course-finder/assets/106768235/ce8cd734-b1c6-470c-97d4-ff0e61828c71"></p> 
+<br>
+<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Demo video of website
+<video src="https://github.com/SK-ALIJAN/course-finder/assets/106768235/03901f75-876f-49fc-83fb-5ec0d81afe0c"></video>
 
-In the project directory, you can run:
 
-### `npm start`
+# previews
+<p align="center"><img src="https://github.com/SK-ALIJAN/course-finder/assets/106768235/ed02bd90-5230-4b44-8807-9a57b2a50156"></p> 
+<p align="center"><img src="https://github.com/SK-ALIJAN/course-finder/assets/106768235/2dd170d8-bc61-43fa-ba97-8bcd73e15035"></p> 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+****************************************************************************************
+Deployed link:-
+# (https://course-finder-beta.vercel.app/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+****************************************************************************************
 
-### `npm test`
+# Tech-Stack Used:-
+1. React
+2. Redux 
+3. HTML
+4. styled components (CSS)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+****************************************************************************************
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🔗 Links
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alijan786/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Terms and Conditions for using this project:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Deployment Restrictions: You are strictly prohibited from deploying any webpage from this project on any platform without explicit permission from the respective owners or rights holders.
+By using this tribute page, you agree to respect the privacy and security of other users and refrain from any disruptive behavior
+Please note that any unauthorized use, distribution, or deployment of this project is a violation of these terms and may be subject to legal consequences.
