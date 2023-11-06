@@ -40,7 +40,11 @@ let WRAPPER = styled.div`
     font-size: 2rem;
     margin-left: 5px;
     cursor: pointer;
+    transition:transform ease-in-out 0.5s;
   }
+   p:hover{
+   transform:scale(1.5)
+   }
 
   .rated {
     color: #b4690e;

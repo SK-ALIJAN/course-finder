@@ -8,21 +8,17 @@ import Rating from "./Rating";
 import styled from "styled-components";
 import { useState } from "react";
 import CourseDetails from "./CourseDetails";
+import { Link } from "react-router-dom";
 
 const CourseList = () => {
   const dispatch = useDispatch();
   const { isloading, iserror, error_message, courses } = useSelector(
     (state) => state.courses
   );
-  let [courseDetails, setCourseDetails] = useState("");
 
   useEffect(() => {
     dispatch(fetchCourses());
   }, [dispatch]);
-
-  let handledetails = (details) => {
-    setCourseDetails(details);
-  };
 
   return (
     <DIV>
@@ -39,25 +35,23 @@ const CourseList = () => {
             {courses.map((ele, i) => {
               return (
                 <div key={ele.id} className="course">
-                  <img src={ele.thumbnail} alt={ele.name} loading="lazy" />
+                  <Link to={"/details"} state={ele}>
+                    <img src={ele.thumbnail} alt={ele.name} loading="lazy" />
+                  </Link>
+
                   <h3>{ele.name}</h3>
                   <p>{ele.instructor}</p>
                   <Rating rating={i > 5 ? 10 - i : i + 1} limit={5} />
-                  <button
-                    onClick={() => {
-                      handledetails(ele);
-                    }}
-                  >
-                    View More
-                  </button>
+
+                  <Link to={"/details"} state={ele}>
+                    <button>View More</button>
+                  </Link>
                 </div>
               );
             })}
           </WRAPPER>
         )}
       </div>
-
-      {courseDetails ? <CourseDetails course={courseDetails} /> : ""}
     </DIV>
   );
 };
@@ -79,9 +73,12 @@ const WRAPPER = styled.div`
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
       rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     padding-bottom: 1rem;
+    transition: transform 0.3s ease;
+    background-color: white;
     img {
       width: 100%;
       height: 20rem;
+      cursor: pointer;
     }
 
     button {
@@ -92,5 +89,9 @@ const WRAPPER = styled.div`
       letter-spacing: 2px;
       cursor: pointer;
     }
+  }
+
+  .course:hover {
+    box-shadow: 5px 10px 100px #abaaaa6e;
   }
 `;
