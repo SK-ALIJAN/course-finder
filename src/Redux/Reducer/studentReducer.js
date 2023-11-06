@@ -9,29 +9,24 @@ import {
 const initialState = {
   enrolledCourses: JSON.parse(localStorage.getItem("enrollCourse")) ?? [],
   completedCourse: JSON.parse(localStorage.getItem("completedCourse")) ?? [],
-  enrollmentCourseDisplay: [],
+  studentData: JSON.parse(localStorage.getItem("student")) ?? {
+    name: "",
+    email: "",
+  },
   CompletedCourseDisplay: [],
 };
 
 const studentReducer = (state = initialState, action) => {
   switch (action.type) {
     case ENROLL_COURSE:
-      let enrolled = [...state.enrolledCourses, action.payload];
+      let enrolled = [...state.enrolledCourses, action.payload.course];
+      let user = { ...state.studentData, ...action.payload };
       localStorage.setItem("enrollCourse", JSON.stringify(enrolled));
-
+      localStorage.setItem("student", JSON.stringify(user));
       return {
         ...state,
-        enrolledCourses: [...state.enrolledCourses, action.payload],
-      };
-
-    case DISPLAY_ENROLL_COURSE:
-      let data = async () => {
-        let courseData = await CourseDisplay(state.enrolledCourses);
-        return courseData;
-      };
-      return {
-        ...state,
-        enrollmentCourseDisplay: [...state.enrollmentCourseDisplay, data()],
+        enrolledCourses: [...state.enrolledCourses, action.payload.course],
+        studentData: { ...action.payload },
       };
 
     case COMPLETE_COURSE:
@@ -42,15 +37,6 @@ const studentReducer = (state = initialState, action) => {
         completedCourse: [...state.completedCourse, action.payload],
       };
 
-    case COMPLETED_COURSE_DISPLAY:
-      let response = async () => {
-        let courseData = await CourseDisplay(state.completedCourse);
-        return courseData;
-      };
-      return {
-        ...state,
-        enrollmentCourseDisplay: [...state.enrollmentCourseDisplay, response()],
-      };
 
     default:
       return state;

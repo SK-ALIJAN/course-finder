@@ -1,11 +1,22 @@
-import React from 'react'
-
+import React from "react";
+import { BiSad } from "react-icons/bi";
+import styled from "styled-components";
 const CourseNotFound = () => {
   return (
-    <div>
+    <DIV>
+      <p>
+        <BiSad />
+      </p>
       <h1>Opps not found!</h1>
-    </div>
-  )
-}
+    </DIV>
+  );
+};
 
-export default CourseNotFound
+export default CourseNotFound;
+
+let DIV = styled.div`
+  text-align: center;
+  p {
+    font-size: 10rem;
+  }
+`;

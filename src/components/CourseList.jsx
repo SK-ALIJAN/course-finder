@@ -6,8 +6,6 @@ import Error from "./Error";
 import CourseNotFound from "./Student-Dashboard/CourseNotFound";
 import Rating from "./Rating";
 import styled from "styled-components";
-import { useState } from "react";
-import CourseDetails from "./CourseDetails";
 import { Link } from "react-router-dom";
 
 const CourseList = () => {

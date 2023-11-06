@@ -30,25 +30,4 @@ export const fetchCourses = (SearchParam) => {
   };
 };
 
-export const CourseDisplay = (courses) => {
-  axios
-    .get("https://65483d18dd8ebcd4ab22a7ac.mockapi.io/course")
-    .then((response) => {
-      let responseLength = response.data.length;
-      let courseLength = courses.length;
-      let filtereddata = [];
 
-      for (let i = 0; i < responseLength; i++) {
-        for (let j = 0; j < courseLength; j++) {
-          if (response.data[i].id == courses[j]) {
-            filtereddata.push(response.data[i]);
-          }
-        }
-      }
-
-      return filtereddata;
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-};

@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { fetchCourses } from "../../Redux/action";
+import { useNavigate } from "react-router-dom";
 
 const Searching = () => {
   let [text, setText] = useState("");
   let dispatch = useDispatch();
+  let { studentData } = useSelector((state) => state.student);
+  let navigate = useNavigate();
 
   let handleSubmit = (e) => {
     e.preventDefault();
     dispatch(fetchCourses(text));
   };
 
+  let handleProfile = () => {
+    navigate("/profile");
+  };
+
   return (
-    <WRAPPER>
+    <WRAPPER data={studentData.name}>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -29,6 +36,14 @@ const Searching = () => {
           <BsSearch className="btn" />
         </button>
       </form>
+
+      {studentData.name ? (
+        <p className="Profile" onClick={handleProfile}>
+          {studentData.name[0].toUpperCase()}
+        </p>
+      ) : (
+        ""
+      )}
     </WRAPPER>
   );
 };
@@ -41,7 +56,7 @@ let WRAPPER = styled.div`
   justify-content: center;
   align-items: center;
   .input {
-    width: 25rem;
+    width: ${(data) => (data ? "20rem" : "25rem")};
     height: 3rem;
     padding-left: 10px;
     border: 2px solid teal;
@@ -76,5 +91,16 @@ let WRAPPER = styled.div`
       font-weight: 600;
       color: teal;
     }
+  }
+
+  .Profile {
+    background-color: teal;
+    width: 2rem;
+    height: 2rem;
+    display: grid;
+    place-content: center;
+    color: white;
+    border-radius: 100%;
+    cursor: pointer;
   }
 `;

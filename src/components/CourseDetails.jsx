@@ -1,9 +1,40 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { GiCancel } from "react-icons/gi";
+import { useDispatch } from "react-redux";
+import { ENROLL_COURSE } from "../Redux/actionType";
 
 const CourseDetails = () => {
   let { state } = useLocation();
+  let [modal, setModal] = useState(false);
+  let [formData, setFormData] = useState({ name: "", email: "" });
+  let dispatch = useDispatch();
+  let navigate = useNavigate();
+
+  let handleModal = () => {
+    setModal(true);
+  };
+  let RemoveModal = () => {
+    setModal(false);
+  };
+
+  // form after clicking entroll button
+  let handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch({ type: ENROLL_COURSE, payload: { course: state, ...formData } });
+
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+  };
+
+  let handleChange = (e) => {
+    let { name, value } = e.target;
+    setFormData((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
 
   return (
     <DIV>
@@ -13,8 +44,9 @@ const CourseDetails = () => {
             <img src={state.thumbnail} alt={state.name} />
             <button>{state.category}</button>
           </div>
+
           <div className="NavigationBtn">
-            <button>Enroll it right now</button>
+            <button onClick={handleModal}>Enroll it right now</button>
 
             <Link to={"/"}>
               <button>May be Later</button>
@@ -43,6 +75,11 @@ const CourseDetails = () => {
             <p>Description: {state.description}</p>
           </div>
 
+          <div className="instructor">
+            <p>Instructor: {state.instructor}</p>
+            <p>Enrollment : {state.enrollmentStatus}</p>
+          </div>
+
           <div className="schedule">
             <p> {state.schedule}</p>
           </div>
@@ -60,6 +97,38 @@ const CourseDetails = () => {
           </div>
         </div>
       </WRAPPER>
+
+      {modal ? (
+        <div className="Modal">
+          <h1>Please fill this !</h1>
+          <h2 onClick={RemoveModal}>
+            <GiCancel />
+          </h2>
+          <div>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                required
+                placeholder="Enter your name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+              <input
+                type="email"
+                required
+                placeholder="Enter your email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </DIV>
   );
 };
@@ -68,6 +137,60 @@ export default CourseDetails;
 
 let DIV = styled.div`
   background-color: white;
+  .Modal {
+    width: 20rem;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    border-radius: 8px;
+    background-color: #3498db;
+    color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    h2 {
+      position: absolute;
+      top: 3px;
+      left: 90%;
+      cursor: pointer;
+    }
+
+    div {
+      margin-top: 2rem;
+      form {
+        display: flex;
+        flex-direction: column;
+        input {
+          margin-bottom: 1rem;
+          height: 3rem;
+          padding-left: 1rem;
+          outline: 0;
+          color: #3498db;
+          font-weight: 600;
+          &::placeholder {
+            color: #3498db;
+          }
+        }
+      }
+      button {
+        background: #fff;
+        color: #3498db;
+        padding: 5px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        letter-spacing: 2px;
+
+        &:hover {
+          background: #2c3e50;
+          color: white;
+        }
+      }
+    }
+  }
 `;
 
 const WRAPPER = styled.div`
@@ -134,6 +257,10 @@ const WRAPPER = styled.div`
       justify-content: space-between;
       margin-bottom: 1rem;
     }
+    .instructor {
+      font-weight: 600;
+      color: #2c3e50;
+    }
     .schedule {
       background: #2c3e50;
       padding: 4px;
@@ -141,6 +268,7 @@ const WRAPPER = styled.div`
       text-align: center;
       margin-bottom: 1rem;
     }
+
     .syllabus {
       font-size: 2rem;
     }
@@ -165,6 +293,20 @@ const WRAPPER = styled.div`
       position: absolute;
       bottom: -10px;
       left: -10px;
+    }
+  }
+
+  @media screen and (max-width: 1100px) {
+    flex-direction: column;
+    .firstRow {
+      padding: 10px;
+      padding-top: 0;
+    }
+    .image {
+      img {
+        width: 100%;
+        height: 20rem;
+      }
     }
   }
 `;
