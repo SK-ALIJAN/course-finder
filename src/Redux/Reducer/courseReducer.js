@@ -5,9 +5,9 @@ import {
 } from "../actionType";
 
 const initialState = {
-  loading: false,
+  isloading: false,
   courses: [],
-  error: false,
+  iserror: false,
   error_message: "",
 };
 
@@ -16,23 +16,25 @@ const courseReducer = (state = initialState, action) => {
     case FETCH_COURSES_REQUEST:
       return {
         ...state,
-        loading: true,
-        error: false,
+        isloading: true,
+        iserror: false,
+        error_message: "",
       };
 
     case FETCH_COURSES_SUCCESS:
       return {
         ...state,
         courses: action.payload,
-        error: false,
-        loading: false,
+        iserror: false,
+        isloading: false,
+        error_message: "",
       };
     case FETCH_COURSES_FAILURE:
       return {
         ...state,
         courses: [],
-        error: true,
-        loading: false,
+        iserror: true,
+        isloading: false,
         error_message: action.payload,
       };
     default:
