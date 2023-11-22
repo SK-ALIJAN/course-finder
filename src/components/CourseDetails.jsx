@@ -100,30 +100,32 @@ const CourseDetails = () => {
 
       {modal ? (
         <div className="Modal">
-          <h1>Please fill this !</h1>
-          <h2 onClick={RemoveModal}>
-            <GiCancel />
-          </h2>
           <div>
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                required
-                placeholder="Enter your name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-              />
-              <input
-                type="email"
-                required
-                placeholder="Enter your email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-              <button type="submit">Submit</button>
-            </form>
+            <h1>Please fill this !</h1>
+            <h2 onClick={RemoveModal}>
+              <GiCancel />
+            </h2>
+            <div>
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  required
+                  placeholder="Enter your name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+                <input
+                  type="email"
+                  required
+                  placeholder="Enter your email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                <button type="submit">Submit</button>
+              </form>
+            </div>
           </div>
         </div>
       ) : (
@@ -138,7 +140,17 @@ export default CourseDetails;
 let DIV = styled.div`
   background-color: white;
   .Modal {
-    width: 20rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    background-color: #58535387;
+    transition: ease-in-out 0.3s;
+  }
+  .Modal > div {
+    width: 22rem;
     padding: 1rem;
     padding-bottom: 2rem;
     border-radius: 8px;
