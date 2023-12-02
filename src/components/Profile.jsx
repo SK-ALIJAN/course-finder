@@ -94,4 +94,7 @@ const Button = styled.button`
   &:hover {
     background-color: #34495e;
   }
+  &:active {
+    transform: scale(1.1);
+  }
 `;

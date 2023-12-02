@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCourses } from "../Redux/action";
 import Loader from "./Loader";
 import Error from "./Error";
 import CourseNotFound from "./Student-Dashboard/CourseNotFound";
-import Rating from "./Rating";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+
+import Course from "./Course";
 
 const CourseList = () => {
   const dispatch = useDispatch();
@@ -31,21 +31,7 @@ const CourseList = () => {
         ) : (
           <WRAPPER>
             {courses.map((ele, i) => {
-              return (
-                <div key={ele.id} className="course">
-                  <Link to={"/details"} state={ele}>
-                    <img src={ele.thumbnail} alt={ele.name} loading="lazy" />
-                  </Link>
-
-                  <h3>{ele.name}</h3>
-                  <p>{ele.instructor}</p>
-                  <Rating rating={i > 5 ? 10 - i : i + 1} limit={5} />
-
-                  <Link to={"/details"} state={ele}>
-                    <button>View More</button>
-                  </Link>
-                </div>
-              );
+              return <Course key={i} ele={ele} i={i} />;
             })}
           </WRAPPER>
         )}
@@ -66,6 +52,7 @@ const WRAPPER = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 3rem;
+  position: relative;
   .course {
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
@@ -91,5 +78,36 @@ const WRAPPER = styled.div`
 
   .course:hover {
     box-shadow: 5px 10px 100px #abaaaa6e;
+  }
+
+  .likes-share {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    p {
+      margin-left: 2rem;
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
+
+    .likeicon {
+      margin-left: 1rem;
+      cursor: pointer;
+      transition: ease-in-out;
+      background-color: transparent;
+      font-size: 1.3rem;
+
+      &:active {
+        transform: scale(1.5);
+      }
+    }
+    .shareicon {
+      &:hover {
+        color: #b4690e;
+        transform: scale(1.5);
+        cursor: pointer;
+      }
+    }
   }
 `;

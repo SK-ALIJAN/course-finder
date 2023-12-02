@@ -4,7 +4,6 @@ import styled from "styled-components";
 const Rating = ({ rating, limit, rateNumber }) => {
   let [starRating, setStarRating] = useState(rating);
 
-
   let handleClick = (i) => {
     setStarRating(i + 1);
   };
@@ -24,7 +23,6 @@ const Rating = ({ rating, limit, rateNumber }) => {
           </p>
         );
       })}
-    
     </WRAPPER>
   );
 };
@@ -40,11 +38,11 @@ let WRAPPER = styled.div`
     font-size: 2rem;
     margin-left: 5px;
     cursor: pointer;
-    transition:transform ease-in-out 0.5s;
+    transition: transform ease-in-out 0.5s;
   }
-   p:hover{
-   transform:scale(1.5)
-   }
+  p:hover {
+    transform: scale(1.5);
+  }
 
   .rated {
     color: #b4690e;

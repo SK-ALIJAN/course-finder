@@ -1,11 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-import MainRoute from './Main-Routes/MainRoute';
+import "./App.css";
+import MainRoute from "./Main-Routes/MainRoute";
 
 function App() {
   return (
     <div className="App">
-      <MainRoute/>
+      <MainRoute />
     </div>
   );
 }
