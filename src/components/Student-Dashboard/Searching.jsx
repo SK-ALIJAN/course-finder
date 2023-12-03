@@ -8,7 +8,7 @@ import ShowSearch from "./ShowSearch";
 
 const Searching = () => {
   let [text, setText] = useState("");
-  let [modal, setModal] = useState(true);
+  let [modal, setModal] = useState(false);
   let dispatch = useDispatch();
   let { studentData } = useSelector((state) => state.student);
   let navigate = useNavigate();
@@ -24,6 +24,16 @@ const Searching = () => {
     };
   }, [text]);
 
+  useEffect(() => {
+    let Session_modal = sessionStorage.getItem("modal");
+    console.log(Session_modal);
+    if (Session_modal !== null) setModal(false);
+    else {
+      sessionStorage.setItem("modal", true);
+      setModal(true);
+    }
+  }, []);
+
   let handleProfile = () => {
     navigate("/profile");
   };
@@ -31,6 +41,7 @@ const Searching = () => {
   let handleModal = () => {
     setTimeout(() => {
       setModal(false);
+      sessionStorage.setItem("modal", false);
     }, 300);
   };
 
@@ -101,6 +112,6 @@ let WRAPPER = styled.div`
     color: white;
     border-radius: 100%;
     cursor: pointer;
-    margin-left:1rem;
+    margin-left: 1rem;
   }
 `;
